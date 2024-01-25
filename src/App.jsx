@@ -5,6 +5,7 @@ import Canvas from "./components/Canvas.jsx";
 
 function App() {
   const [routeHash, setRouteHash] = useState("");
+  const [projectItemFocus, setProjectItemFocus] = useState(null);
 
   useEffect(() => {
     setRouteHash(window.location.hash);
@@ -15,6 +16,11 @@ function App() {
   }, [routeHash]);
 
   const clickNavLink = (to) => {};
+
+  const openLinkInNewTab = (url) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <>
       <div className="nav">
@@ -85,25 +91,30 @@ function App() {
       </div>
       <div id="home" className="page">
         {/* <Canvas className="suit-smoke-canvas"></Canvas> */}
-        <img className="suit-image" src="temp_suit.PNG"></img>
+        <img className="suit-image" src="temp_suit_cutout.png"></img>
         <div className="headline-container">
           <div className="headline headline-large">Hi. I'm Alex.</div>
           <div className="headline">
-            I'm a software developer & mechanical engineer.
+            I'm a <b>software developer</b> and <b>mechanical engineer</b>.
           </div>
           <div className="headline">
-            Send me a message, let's solve your problems together.
+            Send me a message - let's solve your problem together.
           </div>
         </div>
       </div>
       <div id="projects" className="page">
         <div className="projects-wrapper">
-          <div className="projects-item">
+          <div
+            className="projects-item p-i-1"
+            onClick={() =>
+              openLinkInNewTab("https://rocmalone.itch.io/rat-house-rumble")
+            }
+          >
             <img src="RatHouseRumble.png"></img>
-            <p>Test</p>
           </div>
         </div>
-        <div className="smoke-wrapper">
+        <img className="couch-img" src="couch_r.png"></img>
+        {/* <div className="smoke-wrapper">
           <div className="smoke-container">
             <div className="smoke-content">
               list of projects list of projects
@@ -112,7 +123,7 @@ function App() {
               <Canvas id="canvas" className="smoke-canvas"></Canvas>
             </div>
           </div>
-        </div>
+        </div> */}
         projects
       </div>
       <div id="education" className="page">
