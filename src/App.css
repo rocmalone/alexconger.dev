@@ -1,0 +1,139 @@
+/* CSS Backgrounds */
+/* https://github.com/swyxio/spark-joy/blob/master/README.md#background-patterns */
+
+/* SVG wave: https://wickedbackgrounds.com/app */
+
+.nav {
+  position: fixed;
+  top: 25px;
+  /* Center horizontally */
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50vw;
+}
+
+.nav-link {
+  cursor: pointer;
+  font-size: 20pt;
+  margin: 0px 10px;
+}
+
+.nav-link-current {
+  text-decoration: underline;
+  font-weight: 800;
+}
+
+/* Underline on Hover animation for nav-links */
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca; /* Ensure same color as nav-link */
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Pages */
+
+.page {
+  width: 100vw;
+  height: 600px;
+}
+
+#home {
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  /* background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><g transform="rotate(0 960 540) translate(-0 -0) scale(1)"><rect width="1920" height="1080" fill="rgb(150, 207, 255)"></rect><g transform="translate(0, 0)"><path fill="rgb(170, 214, 255)" fill-opacity="1" d="M0,352.943L106.667,350.075C213.333,347.207,426.667,341.471,640,340.581C853.333,339.692,1066.667,343.65,1280,344.095C1493.333,344.54,1706.667,341.472,1813.333,339.938L1920,338.404L1920,1080L1813.333,1080C1706.667,1080,1493.333,1080,1280,1080C1066.667,1080,853.333,1080,640,1080C426.667,1080,213.333,1080,106.667,1080L0,1080Z"></path></g><g transform="translate(0, 360)"><path fill="rgb(189, 221, 255)" fill-opacity="1" d="M0,117.873L106.667,148.42C213.333,178.967,426.667,240.06,640,221.336C853.333,202.612,1066.667,104.069,1280,98.48C1493.333,92.892,1706.667,180.258,1813.333,223.941L1920,267.624L1920,720L1813.333,720C1706.667,720,1493.333,720,1280,720C1066.667,720,853.333,720,640,720C426.667,720,213.333,720,106.667,720L0,720Z"></path></g><g transform="translate(0, 720)"><path fill="rgb(209, 228, 255)" fill-opacity="1" d="M0,136.093L106.667,117.434C213.333,98.774,426.667,61.455,640,80.719C853.333,99.983,1066.667,175.829,1280,189.505C1493.333,203.181,1706.667,154.687,1813.333,130.44L1920,106.192L1920,360L1813.333,360C1706.667,360,1493.333,360,1280,360C1066.667,360,853.333,360,640,360C426.667,360,213.333,360,106.667,360L0,360Z"></path></g></g></svg>') */
+  /* center/cover no-repeat; */
+  /* background-color: #faf8f6; */
+  /* background-color: #cad3d7; */
+  /* background-color: #c7e1f3; */
+  /* background-image: url("cool-background.svg"); */
+  /* background-size: cover; */
+  background-color: #ffebba;
+  color: rgb(33, 33, 85);
+}
+
+.headline {
+  font-size: 16pt;
+}
+
+.headline-large {
+  font-size: 48pt;
+}
+
+.suit-image {
+  height: 100%;
+  margin-right: 30px;
+  filter: drop-shadow(-4px 2px 10px gray);
+}
+
+.suit-smoke-canvas {
+  position: relative;
+  width: 100vw;
+  border: 1px solid red;
+}
+
+#projects {
+  /* background-color: green; */
+}
+
+.projects-item {
+  border-radius: 30px;
+  padding: 15px;
+  background-color: lightgray;
+  width: 300px;
+  filter: drop-shadow(10px 10px 4px black);
+}
+
+.projects-item img {
+  border-radius: 30px;
+  width: 100%;
+}
+
+.projects-item p {
+  margin-top: 0px;
+}
+.smoke-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smoke-canvas {
+  width: 100%;
+  height: 100%;
+}
+.smoke-canvas-container {
+  border: 1px solid red;
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.smoke-appear {
+}
