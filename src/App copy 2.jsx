@@ -78,7 +78,7 @@ function App() {
   return (
     <div className="content">
       <div className="nav">
-        <img src="/favicon_large.png"></img>
+        <img src="/favicon.svg"></img>
         <Link
           className={
             "nav-link " +
@@ -124,16 +124,16 @@ function App() {
         <Link
           className={
             "nav-link" +
-            (routeHash == "#experience"
+            (routeHash == "#education"
               ? " nav-link-current"
               : " hover-underline-animation")
           }
-          to="experience"
+          to="education"
           smooth
           duration={500}
-          onClick={() => setRouteHash("#experience")}
+          onClick={() => setRouteHash("#education")}
         >
-          Experience
+          Education
         </Link>
         {/* <Link
           className={
@@ -162,7 +162,7 @@ function App() {
         {/* <Canvas className="suit-smoke-canvas"></Canvas> */}
         {/* <img className="suit-image-l" src="suit_cutout_flipped.png"></img> */}
         <div className="headline-container">
-          <h1>Hi. I'm Alex.</h1>
+          <div className="headline headline-large">Hi. I'm Alex.</div>
           <div className="headline">
             I'm a <b>software developer</b> and <b>mechanical engineer</b>.
           </div>
@@ -171,141 +171,29 @@ function App() {
             designed electrical generators, and analyzed aircraft systems.
           </div>
           <div className="headline">
-            I love technical discussions and learning new things.<br></br> I
-            believe engineers grow by asking questions.
+            I love technical discussions and learning new things.
           </div>
-          <div className="headline" style={{ marginTop: "30px" }}>
-            Send me a message — let's solve your problem together.
+          <div className="headline">
+            Send me a message - let's solve your problem together.
           </div>
         </div>
         <img className="suit-image" src="suit_cutout.png"></img>
       </div>
 
       <div id="skills" className="page">
-        <h1>My Skills</h1>
-        <h2 style={{ marginTop: "0" }}>Languages</h2>
-        <div className="skills-container skills-languages">
-          <div style={{ marginBottom: "1rem", fontSize: "0.9rem" }}>
-            <div style={{ marginRight: "1rem" }}>
-              {/* // TODO: Add hover info for GS/h */}
-            </div>
-            <div style={{ marginRight: "1rem" }}>★☆☆ = Working Knowledge</div>
-            <div style={{ marginRight: "1rem" }}>★★☆ = Proficient</div>
-            <div style={{ marginRight: "1rem" }}>★★★ = Intermediate</div>
-          </div>
-          <table border="0" style={{}}>
-            <tr>
-              <td>JavaScript &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-              <td>★★★</td>
-            </tr>
-            <tr>
-              <td className="mini-td" style={{ paddingLeft: "1rem" }}>
-                React
-              </td>
-              <td className="mini-td">★★★</td>
-            </tr>
-            <tr>
-              <td className="mini-td" style={{ paddingLeft: "1rem" }}>
-                TypeScript
-              </td>
-              <td className="mini-td">★★☆</td>
-            </tr>
-            <tr>
-              <td className="mini-td" style={{ paddingLeft: "1rem" }}>
-                Angular
-              </td>
-              <td className="mini-td">★★☆</td>
-            </tr>
-            <tr>
-              <td>Java</td>
-              <td>★★★</td>
-            </tr>
-            <tr>
-              <td>Python</td>
-              <td>★★★</td>
-            </tr>
-            <tr>
-              <td>C#</td>
-              <td>★★☆</td>
-            </tr>
-            <tr>
-              <td>SQL</td>
-              <td>★★☆</td>
-            </tr>
-            <tr>
-              <td>C++</td>
-              <td>★★☆</td>
-            </tr>
-            <tr>
-              <td>MATLAB</td>
-              <td>★☆☆</td>
-            </tr>
-          </table>
+        <div className="headline-container">
+          <div className="headline headline-large">My Skills</div>
+          <ul>
+            <li>JavaScript, TypeScript, Java, C#, C++, Python, SQL</li>
+            <li>React</li>
+            <li>Angular</li>
+            <li>Spring</li>
+            <li>Node.js</li>
+            <li>SQL (PostgreSQL & MySQL)</li>
+            <li>Azure</li>
+          </ul>
         </div>
-        <h2>Technologies</h2>
-        <div className="skills-container skills-technology">
-          <div style={{ marginBottom: "1rem", fontSize: "0.9rem" }}>
-            I am comfortable using, deploying with, and troubleshooting all of
-            the technologies listed here.
-          </div>
-          <table border="0">
-            <tr>
-              <td>
-                <div className="title">
-                  <b>WEB</b>
-                  <div className="bar"></div>
-                </div>
-              </td>
-              <td>Node.js, React, Angular, Express.js, Spring Boot</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="title">
-                  <b>TEST</b>
-                  <div className="bar"></div>
-                </div>
-              </td>
-              <td>Seleniuim, JUnit, unittest (python)</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="title">
-                  <b>CLOUD</b>
-                  <div className="bar"></div>
-                </div>
-              </td>
-              <td>Azure, AWS, Linux VPS, Containers</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="title">
-                  <b>DATABASE</b>
-                  <div className="bar"></div>
-                </div>
-              </td>
-              <td>MongoDB, MySQL, PostgreSQL</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="title">
-                  <b>OS</b>
-                  <div className="bar"></div>
-                </div>
-              </td>
-              <td>Ubuntu, Debian, PopOS, Windows</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="title">
-                  <b>OTHER</b>
-                  <div className="bar"></div>
-                </div>
-              </td>
-              <td>Godot Engine, Unity 3D, BeautifulSoup, Docker</td>
-            </tr>
-          </table>
-        </div>
-        <h2>Personal</h2>
+        <img className="pointer-image" src="pointer.png"></img>
       </div>
 
       <div id="projects" className="page">
@@ -348,12 +236,24 @@ function App() {
             </div>
           )}
         </div>
+        {/* <img className="couch-img" src="couch_r.png"></img> */}
+        {/* <div className="smoke-wrapper">
+          <div className="smoke-container">
+            <div className="smoke-content">
+              list of projects list of projects
+            </div>
+            <div className="smoke-canvas-container">
+              <Canvas id="canvas" className="smoke-canvas"></Canvas>
+            </div>
+          </div>
+        </div> */}
+        projects
       </div>
-
-      <div id="experience" className="page">
-        <h1>Experience</h1>
-        <h2>Education</h2>
-        <h2>Work Experience</h2>
+      <div id="education" className="page">
+        education
+      </div>
+      <div id="skills" className="page">
+        skills
       </div>
       <div id="contact" className="page">
         contact
