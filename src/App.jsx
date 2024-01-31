@@ -13,6 +13,8 @@ function App() {
   // Set when the currentProjectItem has finished expanding
   const [expandedProjectItem, setExpandedProjectItem] = useState(null);
 
+  const [selectedEdItem, setSelectedEdItem] = useState(null);
+
   useEffect(() => {
     setRouteHash(window.location.hash);
   }, []);
@@ -364,32 +366,88 @@ function App() {
       <div id="experience" className="page">
         <h1>Experience</h1>
         <h2>Education</h2>
-        <div class="skills-container">
-          <div className="education-item">
-            <div style={{ width: "100%" }}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <h3>Western Governor's University</h3>
+        <div className="ed-container" style={{ marginLeft: "1rem" }}>
+          <div
+            className="ed-item"
+            onMouseEnter={() => setSelectedEdItem(1)}
+            onMouseLeave={() => {
+              if (selectedEdItem == 1) setSelectedEdItem(null);
+            }}
+          >
+            <img className="logo" src="wgu-seal.png"></img>
+            <div className="ed-content">
+              <div className="ed-university">
+                <div>Western Governor's University</div>
                 <div>Salt Lake City, UT</div>
               </div>
-              <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="ed-degree">
                 <div>B.S. Computer Science</div>
                 <div>Expected March 2024</div>
               </div>
             </div>
           </div>
-          <div className="education-item">
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <h3>University of Washington</h3>
-              <div>Seattle, WA</div>
-            </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <div>B.S. Mechanical Engineering</div>
-              <div>2022</div>
+          <div
+            className="ed-item"
+            onMouseEnter={() => setSelectedEdItem(2)}
+            onMouseLeave={() => {
+              if (selectedEdItem == 2) setSelectedEdItem(null);
+            }}
+          >
+            <img className="logo" src="uw-seal.jpg"></img>
+            <div className="ed-content">
+              <div className="ed-university">
+                <div>University of Washington</div>
+                <div>Seattle, WA</div>
+              </div>
+              <div className="ed-degree">
+                <div>B.S. Mechanical Engineering</div>
+                <div>2022</div>
+              </div>
             </div>
           </div>
         </div>
-
         <h2>Work Experience</h2>
+        <div className="work-container" style={{ marginLeft: "1rem" }}>
+          <div className="ed-item">
+            <img className="logo" src="boeing-logo.png"></img>
+            <div className="ed-content">
+              <div className="ed-university">
+                <div>The Boeing Company</div>
+                <div>Renton, WA</div>
+              </div>
+              <div className="ed-degree">
+                <div>Mechanical Engineer</div>
+                <div>08/2022 - 06/2023</div>
+              </div>
+            </div>
+          </div>
+          <div className="ed-item">
+            <img className="logo" src="boeing-logo.png"></img>
+            <div className="ed-content">
+              <div className="ed-university">
+                <div>The Boeing Company</div>
+                <div>Renton, WA</div>
+              </div>
+              <div className="ed-degree">
+                <div>Mechanical Engineer Intern</div>
+                <div>06/2021 - 09/2021</div>
+              </div>
+            </div>
+          </div>
+          <div className="ed-item">
+            <img className="logo" src="boeing-logo.png"></img>
+            <div className="ed-content">
+              <div className="ed-university">
+                <div>The Boeing Company</div>
+                <div>Everett, WA</div>
+              </div>
+              <div className="ed-degree">
+                <div>Mechanical Engineer Intern</div>
+                <div>06/2020 - 09/2020</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="contact" className="page">
         contact
