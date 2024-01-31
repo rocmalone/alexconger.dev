@@ -168,18 +168,9 @@ h1 {
 #skills {
   flex-direction: column;
   width: 100%;
-  background-image: url("notebook.png");
+  /* background-image: url("notebook.png");
   background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.pointer-image {
-  /* min-height: 100px; */
-  height: 600px;
-  filter: drop-shadow(4px 2px 10px gray);
-  z-index: 100;
-  position: relative;
-  right: 100px;
+  background-repeat: no-repeat; */
 }
 
 #skills {
@@ -187,6 +178,16 @@ h1 {
 
 .skills-container {
   margin-left: 1rem;
+}
+
+.skills-languages {
+  display: flex;
+}
+
+.pointer-image {
+  position: relative;
+  height: 500px;
+  filter: drop-shadow(4px 2px 10px gray);
 }
 
 #skills h2 {
@@ -214,6 +215,11 @@ h1 {
   height: 0px;
   margin: 0 10px;
   min-width: 30px;
+}
+
+#experience {
+  display: flex;
+  flex-direction: column;
 }
 
 #projects {

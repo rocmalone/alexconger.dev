@@ -180,68 +180,78 @@ function App() {
         </div>
         <img className="suit-image" src="suit_cutout.png"></img>
       </div>
-
+      {/* <img className="skills-bg" src="notebook.png"></img> */}
       <div id="skills" className="page">
         <h1>My Skills</h1>
-        <h2 style={{ marginTop: "0" }}>Languages</h2>
-        <div className="skills-container skills-languages">
-          <div className="lang-tech-container"></div>
-          <div style={{ marginBottom: "1rem", fontSize: "0.9rem" }}>
-            <div style={{ marginRight: "1rem" }}>
-              {/* // TODO: Add hover info for GS/h */}
+        <div style={{ display: "flex" }}>
+          <div>
+            <h2 style={{ marginTop: "0" }}>Languages</h2>
+            <div
+              style={{
+                marginLeft: "1rem",
+              }}
+            >
+              <div style={{ marginBottom: "1rem", fontSize: "0.9rem" }}>
+                <div style={{ marginRight: "1rem" }}>
+                  {/* // TODO: Add hover info for GS/h */}
+                </div>
+                <div style={{ marginRight: "1rem" }}>
+                  ★☆☆ = Working Knowledge
+                </div>
+                <div style={{ marginRight: "1rem" }}>★★☆ = Proficient</div>
+                <div style={{ marginRight: "1rem" }}>★★★ = Intermediate</div>
+              </div>
+              <table border="0" style={{}}>
+                <tr>
+                  <td>JavaScript &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <td>★★★</td>
+                </tr>
+                <tr>
+                  <td className="mini-td" style={{ paddingLeft: "1rem" }}>
+                    React
+                  </td>
+                  <td className="mini-td">★★★</td>
+                </tr>
+                <tr>
+                  <td className="mini-td" style={{ paddingLeft: "1rem" }}>
+                    TypeScript
+                  </td>
+                  <td className="mini-td">★★☆</td>
+                </tr>
+                <tr>
+                  <td className="mini-td" style={{ paddingLeft: "1rem" }}>
+                    Angular
+                  </td>
+                  <td className="mini-td">★★☆</td>
+                </tr>
+                <tr>
+                  <td>Java</td>
+                  <td>★★★</td>
+                </tr>
+                <tr>
+                  <td>Python</td>
+                  <td>★★★</td>
+                </tr>
+                <tr>
+                  <td>C#</td>
+                  <td>★★☆</td>
+                </tr>
+                <tr>
+                  <td>SQL</td>
+                  <td>★★☆</td>
+                </tr>
+                <tr>
+                  <td>C++</td>
+                  <td>★★☆</td>
+                </tr>
+                <tr>
+                  <td>MATLAB</td>
+                  <td>★☆☆</td>
+                </tr>
+              </table>
             </div>
-            <div style={{ marginRight: "1rem" }}>★☆☆ = Working Knowledge</div>
-            <div style={{ marginRight: "1rem" }}>★★☆ = Proficient</div>
-            <div style={{ marginRight: "1rem" }}>★★★ = Intermediate</div>
           </div>
-          <table border="0" style={{}}>
-            <tr>
-              <td>JavaScript &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-              <td>★★★</td>
-            </tr>
-            <tr>
-              <td className="mini-td" style={{ paddingLeft: "1rem" }}>
-                React
-              </td>
-              <td className="mini-td">★★★</td>
-            </tr>
-            <tr>
-              <td className="mini-td" style={{ paddingLeft: "1rem" }}>
-                TypeScript
-              </td>
-              <td className="mini-td">★★☆</td>
-            </tr>
-            <tr>
-              <td className="mini-td" style={{ paddingLeft: "1rem" }}>
-                Angular
-              </td>
-              <td className="mini-td">★★☆</td>
-            </tr>
-            <tr>
-              <td>Java</td>
-              <td>★★★</td>
-            </tr>
-            <tr>
-              <td>Python</td>
-              <td>★★★</td>
-            </tr>
-            <tr>
-              <td>C#</td>
-              <td>★★☆</td>
-            </tr>
-            <tr>
-              <td>SQL</td>
-              <td>★★☆</td>
-            </tr>
-            <tr>
-              <td>C++</td>
-              <td>★★☆</td>
-            </tr>
-            <tr>
-              <td>MATLAB</td>
-              <td>★☆☆</td>
-            </tr>
-          </table>
+          <img className="pointer-image" src="pointer.png"></img>
         </div>
         <h2>Technologies</h2>
         <div className="skills-container skills-technology">
@@ -284,7 +294,7 @@ function App() {
                   <div className="bar"></div>
                 </div>
               </td>
-              <td>MongoDB, MySQL, PostgreSQL</td>
+              <td>MongoDB, MySQL, PostgreSQL, SQLite</td>
             </tr>
             <tr>
               <td>
@@ -306,7 +316,7 @@ function App() {
             </tr>
           </table>
         </div>
-        <h2>Personal</h2>
+        {/* <h2>Personal</h2> */}
       </div>
 
       <div id="projects" className="page">
@@ -354,6 +364,31 @@ function App() {
       <div id="experience" className="page">
         <h1>Experience</h1>
         <h2>Education</h2>
+        <div class="skills-container">
+          <div className="education-item">
+            <div style={{ width: "100%" }}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <h3>Western Governor's University</h3>
+                <div>Salt Lake City, UT</div>
+              </div>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div>B.S. Computer Science</div>
+                <div>Expected March 2024</div>
+              </div>
+            </div>
+          </div>
+          <div className="education-item">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <h3>University of Washington</h3>
+              <div>Seattle, WA</div>
+            </div>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div>B.S. Mechanical Engineering</div>
+              <div>2022</div>
+            </div>
+          </div>
+        </div>
+
         <h2>Work Experience</h2>
       </div>
       <div id="contact" className="page">
