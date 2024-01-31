@@ -185,6 +185,7 @@ function App() {
         <h1>My Skills</h1>
         <h2 style={{ marginTop: "0" }}>Languages</h2>
         <div className="skills-container skills-languages">
+          <div className="lang-tech-container"></div>
           <div style={{ marginBottom: "1rem", fontSize: "0.9rem" }}>
             <div style={{ marginRight: "1rem" }}>
               {/* // TODO: Add hover info for GS/h */}
