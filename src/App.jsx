@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-scroll";
 import "./App.css";
 import Canvas from "./components/Canvas.jsx";
 
 function App() {
   const [routeHash, setRouteHash] = useState("#home");
+  const [selectedHash, setSelectedHash] = useState("#home");
   // These states facilitate the project item animations
   // Set when project item clicked
   const [currentProjectItem, setCurrentProjectItem] = useState(null);
@@ -15,13 +16,73 @@ function App() {
 
   const [selectedEdItem, setSelectedEdItem] = useState(null);
 
-  useEffect(() => {
-    setRouteHash(window.location.hash);
-  }, []);
+  const [scrollTo, setScrollTo] = useState(null);
+
+  const homeDivRef = useRef(null);
+  const skillsDivRef = useRef(null);
+  const projectsDivRef = useRef(null);
+  const resumeDivRef = useRef(null);
 
   useEffect(() => {
-    window.location.hash = routeHash;
-  }, [routeHash]);
+    // setRouteHash(window.location.hash);
+  }, []);
+
+  // useEffect(() => {
+  //   window.location.hash = routeHash;
+  // }, [routeHash]);
+
+  // Scroll listener
+  const checkIfDivInView = (targetDivRef) => {
+    if (targetDivRef.current) {
+      const targetDivRect = targetDivRef.current.getBoundingClientRect();
+      const isDivInView =
+        targetDivRect.top < window.innerHeight && targetDivRect.bottom >= 0;
+      // targetDivRect.top < window.innerHeight;
+      return isDivInView;
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (checkIfDivInView(homeDivRef)) {
+        if (scrollTo == "#home") {
+          setScrollTo(null);
+          setRouteHash("#home");
+        } else if (!scrollTo) {
+          setRouteHash("#home");
+        }
+      } else if (checkIfDivInView(skillsDivRef)) {
+        if (scrollTo == "#skills") {
+          setScrollTo(null);
+          setRouteHash("#skills");
+        } else if (!scrollTo) {
+          setRouteHash("#skills");
+        }
+      } else if (checkIfDivInView(projectsDivRef)) {
+        if (scrollTo == "#projects") {
+          setScrollTo(null);
+          setRouteHash("#projects");
+        } else if (!scrollTo) {
+          setRouteHash("#projects");
+        }
+      } else if (checkIfDivInView(resumeDivRef)) {
+        if (scrollTo == "#resume") {
+          setScrollTo(null);
+          setRouteHash("#resume");
+        } else if (!scrollTo) {
+          setRouteHash("#resume");
+        }
+      }
+    };
+
+    // Attach the scroll event listener to the window
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const openLinkInNewTab = (url) => {
     window.open(url, "_blank");
@@ -62,6 +123,11 @@ function App() {
     }
   };
 
+  const handleLinkScroll = (hash, scrollDuration) => {
+    console.log("handling link scroll");
+    setScrollTo(hash);
+  };
+
   // Change the justify-content property to make the item stay at its position in the
   // left/center/right when the other items disappear
   const projectItemsWrapperStyle = {
@@ -91,7 +157,7 @@ function App() {
           to="home"
           smooth
           duration={500}
-          onClick={() => setRouteHash("#home")}
+          onClick={() => handleLinkScroll("#home", 500)}
         >
           Me
         </Link>
@@ -105,7 +171,7 @@ function App() {
           to="skills"
           smooth
           duration={500}
-          onClick={() => setRouteHash("#skills")}
+          onClick={() => handleLinkScroll("#skills", 500)}
         >
           Skills
         </Link>
@@ -119,23 +185,23 @@ function App() {
           to="projects"
           smooth
           duration={500}
-          onClick={() => setRouteHash("#projects")}
+          onClick={() => handleLinkScroll("#projects", 500)}
         >
           Projects
         </Link>
         <Link
           className={
             "nav-link" +
-            (routeHash == "#experience"
+            (routeHash == "#resume"
               ? " nav-link-current"
               : " hover-underline-animation")
           }
-          to="experience"
+          to="resume"
           smooth
           duration={500}
-          onClick={() => setRouteHash("#experience")}
+          onClick={() => handleLinkScroll("#resume", 500)}
         >
-          Experience
+          Resume
         </Link>
         {/* <Link
           className={
@@ -160,7 +226,7 @@ function App() {
           Contact
         </Link> */}
       </div>
-      <div id="home" className="page">
+      <div id="home" className="page" ref={homeDivRef}>
         {/* <Canvas className="suit-smoke-canvas"></Canvas> */}
         {/* <img className="suit-image-l" src="suit_cutout_flipped.png"></img> */}
         <div className="headline-container">
@@ -173,8 +239,8 @@ function App() {
             designed electrical generators, and analyzed aircraft systems.
           </div>
           <div className="headline">
-            I love technical discussions and learning new things.<br></br> I
-            believe engineers grow by asking questions.
+            I love technical discussions and learning new things,<br></br>and I
+            believe good engineers ask lots of questions.
           </div>
           <div className="headline" style={{ marginTop: "30px" }}>
             Send me a message — let's solve your problem together.
@@ -183,7 +249,7 @@ function App() {
         <img className="suit-image" src="suit_cutout.png"></img>
       </div>
       {/* <img className="skills-bg" src="notebook.png"></img> */}
-      <div id="skills" className="page">
+      <div id="skills" className="page" ref={skillsDivRef}>
         <h1>My Skills</h1>
         <div style={{ display: "flex" }}>
           <div>
@@ -191,145 +257,153 @@ function App() {
             <div
               style={{
                 marginLeft: "1rem",
+                minWidth: "200px",
               }}
             >
               <div style={{ marginBottom: "1rem", fontSize: "0.9rem" }}>
                 <div style={{ marginRight: "1rem" }}>
                   {/* // TODO: Add hover info for GS/h */}
                 </div>
-                <div style={{ marginRight: "1rem" }}>
-                  ★☆☆ = Working Knowledge
-                </div>
+                <div style={{ marginRight: "1rem" }}>★☆☆ = Practical</div>
                 <div style={{ marginRight: "1rem" }}>★★☆ = Proficient</div>
                 <div style={{ marginRight: "1rem" }}>★★★ = Intermediate</div>
               </div>
               <table border="0" style={{}}>
-                <tr>
-                  <td>JavaScript &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                  <td>★★★</td>
-                </tr>
-                <tr>
-                  <td className="mini-td" style={{ paddingLeft: "1rem" }}>
-                    React
-                  </td>
-                  <td className="mini-td">★★★</td>
-                </tr>
-                <tr>
-                  <td className="mini-td" style={{ paddingLeft: "1rem" }}>
-                    TypeScript
-                  </td>
-                  <td className="mini-td">★★☆</td>
-                </tr>
-                <tr>
-                  <td className="mini-td" style={{ paddingLeft: "1rem" }}>
-                    Angular
-                  </td>
-                  <td className="mini-td">★★☆</td>
-                </tr>
-                <tr>
-                  <td>Java</td>
-                  <td>★★★</td>
-                </tr>
-                <tr>
-                  <td>Python</td>
-                  <td>★★★</td>
-                </tr>
-                <tr>
-                  <td>C#</td>
-                  <td>★★☆</td>
-                </tr>
-                <tr>
-                  <td>SQL</td>
-                  <td>★★☆</td>
-                </tr>
-                <tr>
-                  <td>C++</td>
-                  <td>★★☆</td>
-                </tr>
-                <tr>
-                  <td>MATLAB</td>
-                  <td>★☆☆</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>JavaScript &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>★★★</td>
+                  </tr>
+                  <tr>
+                    <td className="mini-td" style={{ paddingLeft: "1rem" }}>
+                      React
+                    </td>
+                    <td className="mini-td">★★★</td>
+                  </tr>
+                  <tr>
+                    <td className="mini-td" style={{ paddingLeft: "1rem" }}>
+                      TypeScript
+                    </td>
+                    <td className="mini-td">★★☆</td>
+                  </tr>
+                  <tr>
+                    <td className="mini-td" style={{ paddingLeft: "1rem" }}>
+                      Angular
+                    </td>
+                    <td className="mini-td">★★☆</td>
+                  </tr>
+                  <tr>
+                    <td>Java</td>
+                    <td>★★★</td>
+                  </tr>
+                  <tr>
+                    <td>Python</td>
+                    <td>★★★</td>
+                  </tr>
+                  <tr>
+                    <td>C#</td>
+                    <td>★★☆</td>
+                  </tr>
+                  <tr>
+                    <td>SQL</td>
+                    <td>★★☆</td>
+                  </tr>
+                  <tr>
+                    <td>C++</td>
+                    <td>★★☆</td>
+                  </tr>
+                  <tr>
+                    <td>MATLAB</td>
+                    <td>★☆☆</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
-          <img className="pointer-image" src="pointer.png"></img>
-        </div>
-        <h2>Technologies</h2>
-        <div className="skills-container skills-technology">
-          <div style={{ marginBottom: "1rem", fontSize: "0.9rem" }}>
-            I am comfortable using, deploying with, and troubleshooting all of
-            the technologies listed here.
+          {/* <img className="pointer-image" src="pointer.png"></img> */}
+
+          <div
+            style={{ marginLeft: "30px" }}
+            className="skills-container skills-technology"
+          >
+            <h2 style={{ marginTop: "0" }}>Technologies</h2>
+            <div style={{ marginBottom: "1rem", fontSize: "0.9rem" }}>
+              I am comfortable using, deploying with, and troubleshooting all of
+              the technologies listed here.
+            </div>
+            <table border="0">
+              <tbody>
+                <tr>
+                  <td>
+                    <div className="title">
+                      <b>WEB</b>
+                      <div className="bar"></div>
+                    </div>
+                  </td>
+                  <td>Node.js, React, Angular, Express.js, Spring Boot</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className="title">
+                      <b>TEST</b>
+                      <div className="bar"></div>
+                    </div>
+                  </td>
+                  <td>Seleniuim, JUnit, unittest (python)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className="title">
+                      <b>CLOUD</b>
+                      <div className="bar"></div>
+                    </div>
+                  </td>
+                  <td>Azure, AWS S3 & EC2 Linux VPS, Containers</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className="title">
+                      <b>DATABASE</b>
+                      <div className="bar"></div>
+                    </div>
+                  </td>
+                  <td>MongoDB, MySQL, PostgreSQL, SQLite</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className="title">
+                      <b>OS</b>
+                      <div className="bar"></div>
+                    </div>
+                  </td>
+                  <td>Ubuntu, Debian, PopOS, Windows</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className="title">
+                      <b>OTHER</b>
+                      <div className="bar"></div>
+                    </div>
+                  </td>
+                  <td>Godot Engine, Unity 3D, BeautifulSoup, Docker</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <table border="0">
-            <tr>
-              <td>
-                <div className="title">
-                  <b>WEB</b>
-                  <div className="bar"></div>
-                </div>
-              </td>
-              <td>Node.js, React, Angular, Express.js, Spring Boot</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="title">
-                  <b>TEST</b>
-                  <div className="bar"></div>
-                </div>
-              </td>
-              <td>Seleniuim, JUnit, unittest (python)</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="title">
-                  <b>CLOUD</b>
-                  <div className="bar"></div>
-                </div>
-              </td>
-              <td>Azure, AWS, Linux VPS, Containers</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="title">
-                  <b>DATABASE</b>
-                  <div className="bar"></div>
-                </div>
-              </td>
-              <td>MongoDB, MySQL, PostgreSQL, SQLite</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="title">
-                  <b>OS</b>
-                  <div className="bar"></div>
-                </div>
-              </td>
-              <td>Ubuntu, Debian, PopOS, Windows</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="title">
-                  <b>OTHER</b>
-                  <div className="bar"></div>
-                </div>
-              </td>
-              <td>Godot Engine, Unity 3D, BeautifulSoup, Docker</td>
-            </tr>
-          </table>
         </div>
+
         {/* <h2>Personal</h2> */}
       </div>
 
-      <div id="projects" className="page">
+      <div id="projects" className="page" ref={projectsDivRef}>
         <h1>Projects</h1>
         <div className="project-items-wrapper" style={projectItemsWrapperStyle}>
           {(!expandingProjectItem || expandingProjectItem == 1) && (
             <div
               className={"projects-item p-i-1 " + getProjectItemClass(1)}
               id="p-i-1"
-              onClick={() => handleCurrentProjectItem(1)}
-              onBlur={() => handleCurrentProjectItem(1)}
+              onMouseEnter={() => handleCurrentProjectItem(1)}
+              onMouseLeave={() => handleCurrentProjectItem(1)}
             >
               <img src="RatHouseRumble.png"></img>
             </div>
@@ -338,8 +412,8 @@ function App() {
             <div
               className={"projects-item p-i-2 " + getProjectItemClass(2)}
               id="p-i-2"
-              onClick={() => handleCurrentProjectItem(2)}
-              onBlur={() => handleCurrentProjectItem(2)}
+              onMouseEnter={() => handleCurrentProjectItem(2)}
+              onMouseLeave={() => handleCurrentProjectItem(2)}
             >
               <img src="travel_world.jpg"></img>
               {/* Expanded item content */}
@@ -354,8 +428,8 @@ function App() {
             <div
               className={"projects-item p-i-3 " + getProjectItemClass(3)}
               id="p-i-3"
-              onClick={() => handleCurrentProjectItem(3)}
-              onBlur={() => handleCurrentProjectItem(3)}
+              onMouseEnter={() => handleCurrentProjectItem(3)}
+              onMouseLeave={() => handleCurrentProjectItem(3)}
             >
               <img src="temp_suit_cutout.png"></img>
             </div>
@@ -363,94 +437,9 @@ function App() {
         </div>
       </div>
 
-      <div id="experience" className="page">
-        <h1>Experience</h1>
-        <h2>Education</h2>
-        <div className="ed-container" style={{ marginLeft: "1rem" }}>
-          <div
-            className="ed-item"
-            onMouseEnter={() => setSelectedEdItem(1)}
-            onMouseLeave={() => {
-              if (selectedEdItem == 1) setSelectedEdItem(null);
-            }}
-          >
-            <img className="logo" src="wgu-seal.png"></img>
-            <div className="ed-content">
-              <div className="ed-university">
-                <div>Western Governor's University</div>
-                <div>Salt Lake City, UT</div>
-              </div>
-              <div className="ed-degree">
-                <div>B.S. Computer Science</div>
-                <div>Expected March 2024</div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="ed-item"
-            onMouseEnter={() => setSelectedEdItem(2)}
-            onMouseLeave={() => {
-              if (selectedEdItem == 2) setSelectedEdItem(null);
-            }}
-          >
-            <img className="logo" src="uw-seal.jpg"></img>
-            <div className="ed-content">
-              <div className="ed-university">
-                <div>University of Washington</div>
-                <div>Seattle, WA</div>
-              </div>
-              <div className="ed-degree">
-                <div>B.S. Mechanical Engineering</div>
-                <div>2022</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <h2>Work Experience</h2>
-        <div className="work-container" style={{ marginLeft: "1rem" }}>
-          <div className="ed-item">
-            <img className="logo" src="boeing-logo.png"></img>
-            <div className="ed-content">
-              <div className="ed-university">
-                <div>The Boeing Company</div>
-                <div>Renton, WA</div>
-              </div>
-              <div className="ed-degree">
-                <div>Mechanical Engineer</div>
-                <div>08/2022 - 06/2023</div>
-              </div>
-            </div>
-          </div>
-          <div className="ed-item">
-            <img className="logo" src="boeing-logo.png"></img>
-            <div className="ed-content">
-              <div className="ed-university">
-                <div>The Boeing Company</div>
-                <div>Renton, WA</div>
-              </div>
-              <div className="ed-degree">
-                <div>Mechanical Engineer Intern</div>
-                <div>06/2021 - 09/2021</div>
-              </div>
-            </div>
-          </div>
-          <div className="ed-item">
-            <img className="logo" src="boeing-logo.png"></img>
-            <div className="ed-content">
-              <div className="ed-university">
-                <div>The Boeing Company</div>
-                <div>Everett, WA</div>
-              </div>
-              <div className="ed-degree">
-                <div>Mechanical Engineer Intern</div>
-                <div>06/2020 - 09/2020</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="contact" className="page">
-        contact
+      <div id="resume" className="page" ref={resumeDivRef}>
+        <h1>Resume</h1>
+        <div>I'm happy that you're interested in working with me.</div>
       </div>
     </div>
   );

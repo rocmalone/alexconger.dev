@@ -46,7 +46,7 @@
   align-items: center;
   justify-content: center;
   height: 50px;
-  min-width: 36rem;
+  min-width: 30rem;
   width: 50vw;
   max-width: 456px;
   z-index: 999;
@@ -102,8 +102,8 @@
   width: 100%;
   min-height: 600px;
   height: auto;
-  padding-top: 160px;
-  margin-bottom: 10px;
+  padding-top: 100px;
+  margin-bottom: 140px;
   color: #033d9c;
 
   display: flex;
@@ -112,6 +112,7 @@
 }
 
 #home {
+  padding-top: 140px;
 }
 
 .headline-container {
@@ -162,7 +163,6 @@ h1 {
 .suit-smoke-canvas {
   position: relative;
   /* width: 100vw; */
-  border: 1px solid red;
 }
 
 #skills {
@@ -224,10 +224,7 @@ h1 {
 
 #projects {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  margin-top: 100px;
 }
 
 #projects .couch-img {
@@ -235,11 +232,11 @@ h1 {
 }
 
 .project-items-wrapper {
+  padding-top: 100px;
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 50px;
-  border: 1px solid red;
 }
 
 .projects-item {
@@ -431,84 +428,9 @@ h1 {
 .smoke-appear {
 }
 
-#experience {
-}
-
-.ed-container {
-  width: 100%;
-}
-
-.ed-item {
-  background-color: white;
-  padding: 0.4rem 0.8rem;
-  border: 1;
-  width: 100%;
-  height: 60px;
-  max-width: 800px;
-
-  border-radius: 11px;
-
-  filter: drop-shadow(4px 2px 10px gray);
-  margin-bottom: 1rem;
-  transition: height 1s ease-in-out;
-
-  display: flex;
-  align-items: flex-start;
-}
-
-.logo {
-  height: 3rem;
-  width: 3rem;
-}
-
-.ed-item .ed-content {
+#resume {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: space-between;
-  width: 100%;
-  margin-left: 0.8rem;
-}
-
-.ed-content > div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.ed-university {
-  font-weight: 600;
-}
-
-.ed-item-expanded {
-  height: 128px;
-}
-
-.ed-university > div:nth-child(2) {
-  padding-left: 6px;
-}
-
-.work-item {
-  background-color: white;
-  padding: 0.4rem 0.8rem;
-  border: 1;
-  width: 100%;
-  height: 60px;
-  max-width: 600px;
-
-  border-radius: 11px;
-
-  filter: drop-shadow(4px 2px 10px gray);
-  margin-bottom: 1rem;
-  transition: height 1s ease-in-out;
-}
-
-.work-item > div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.work-item > div:first-child {
-  font-weight: 600;
+  align-items: flex-start;
 }
