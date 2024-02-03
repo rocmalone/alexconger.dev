@@ -165,6 +165,38 @@ h1 {
   /* width: 100vw; */
 }
 
+.logos {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 50px;
+  width: 100%;
+}
+
+.logos > a {
+  margin: 20px 20px;
+  transition: transform 0.25s ease-out;
+}
+
+.logos > a:hover {
+  transform: scale(1.2);
+}
+
+.mail-icon {
+  width: 50px;
+  height: auto;
+}
+
+.github-logo {
+  width: 46px;
+  height: auto;
+}
+
+.linkedin-logo {
+  width: 46px;
+  height: auto;
+}
+
 #skills {
   flex-direction: column;
   width: 100%;
@@ -172,9 +204,6 @@ h1 {
   /* background-image: url("notebook.png");
   background-size: contain;
   background-repeat: no-repeat; */
-}
-
-#skills {
 }
 
 .skills-container {
@@ -185,6 +214,20 @@ h1 {
   display: flex;
 }
 
+.language-container {
+  width: 230px;
+}
+
+.language-container > ul {
+  margin: 0;
+  margin-top: 24px;
+  padding-left: 2em;
+}
+
+.language-container > ul > li {
+  margin-bottom: 1px;
+}
+
 .pointer-image {
   position: relative;
   height: 500px;
@@ -193,10 +236,6 @@ h1 {
 
 #skills h2 {
   margin-bottom: 5px;
-}
-
-.mini-td {
-  font-size: 0.9rem;
 }
 
 .skills-technology table tr td {
