@@ -37,7 +37,7 @@
 .nav {
   position: fixed;
   top: 25px;
-  /* Center horizontally */
+
   left: 50%;
   transform: translateX(-50%);
 
@@ -68,7 +68,6 @@
 }
 
 .nav-link-current {
-  /* text-decoration: underline; */
   font-weight: 700;
 }
 
@@ -310,4 +309,11 @@ h1 {
   justify-content: flex-start;
   align-items: flex-start;
   min-height: 1000px;
+}
+
+#resume a {
+  color: #2e9cbb;
+}
+#resume a:visited {
+  color: #83039c;
 }

@@ -4,6 +4,7 @@ import FlipCard from "./components/FlipCard.jsx";
 import "./App.css";
 // import fc from "./flip.module.css";
 import Canvas from "./components/Canvas.jsx";
+import NavBar from "./components/NavBar.jsx";
 
 function App() {
   const [routeHash, setRouteHash] = useState("#home");
@@ -138,14 +139,14 @@ function App() {
           Resume
         </Link>
       </div>
+
       <div id="home" className="page" ref={homeDivRef}>
         {/* <Canvas className="suit-smoke-canvas"></Canvas> */}
         {/* <img className="suit-image-l" src="suit_cutout_flipped.png"></img> */}
         <div className="headline-container">
           <h1>Hi. I'm Alex.</h1>
           <div className="headline">
-            I'm a <b>software developer</b> and former{" "}
-            <b>mechanical engineer</b>.
+            I'm a <b>software developer</b> and <b>mechanical engineer</b>.
           </div>
           <div className="headline">
             I've developed video games, written full-stack web apps,<br></br>
@@ -246,7 +247,7 @@ function App() {
                 "Queue structure & API adapter",
               ],
               link: "https://deathroll.online/",
-              githubLink: "test",
+              githubLink: "https://github.com/rocmalone/aipartychat",
             }}
           ></FlipCard>
           <FlipCard
@@ -354,14 +355,19 @@ function App() {
             </table>
           </div>
         </div>
-
-        {/* <h2>Personal</h2> */}
       </div>
 
       <div id="resume" className="page" ref={resumeDivRef}>
         <h1>Resume</h1>
-        <p>.</p>
-        <p></p>
+        <p>
+          View my resume below, or <a href="Resume.pdf">download</a>.
+        </p>
+        <iframe
+          src="Resume.pdf#zoom=100&navpanes=0&scrollbar=0"
+          width="100%"
+          height="1190px"
+          style={{ marginBottom: "200px" }}
+        ></iframe>
       </div>
     </div>
   );
