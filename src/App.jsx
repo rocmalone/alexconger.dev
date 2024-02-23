@@ -165,6 +165,7 @@ function App() {
                 className="mail-icon"
                 href="mailto:aconger00@gmail.com"
                 target="_blank"
+                rel="noreferrer"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +260,7 @@ function App() {
               tech: "C++, Arduino UNO (ATMEGA328P)",
               features: [
                 "Dynamic response to thermal sensors",
-                "Modulate fuel and active cooling",
+                "Machine Learning optimized fuel-flow",
                 "Fault detection & operational validation to prevent thermal runaway",
                 "Adapter design pattern",
               ],
@@ -282,6 +283,7 @@ function App() {
               <li>C#</li>
               <li>SQL</li>
               <li>C++</li>
+              <li>Bash Scripts</li>
               <li>MATLAB</li>
             </ul>
           </div>
@@ -297,6 +299,15 @@ function App() {
             </div>
             <table border="0">
               <tbody>
+                <tr>
+                  <td>
+                    <div className="title">
+                      <b>DATA</b>
+                      <div className="bar"></div>
+                    </div>
+                  </td>
+                  <td>PyTorch, pandas, numpy</td>
+                </tr>
                 <tr>
                   <td>
                     <div className="title">
